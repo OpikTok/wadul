@@ -1,6 +1,6 @@
 FROM php:8.2-cli
 
-# Instalasi library dasar yang dibutuhkan Laravel
+# Instalasi library dasar
 RUN apt-get update && apt-get install -y \
     libpng-dev libjpeg-dev libfreetype6-dev \
     zip unzip git curl \
@@ -13,11 +13,9 @@ COPY . .
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 RUN composer install --no-interaction --optimize-autoloader --no-dev
 
-# IZIN FOLDER: Dibuat lebih fleksibel agar bisa menulis file/foto
-RUN chmod -R 777 storage bootstrap/cache
+# Izin folder
+RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache \
+    && chmod -R 775 /var/www/html/storage /var/www/html/bootstrap/cache
 
-# Jalankan storage link
-RUN php artisan storage:link
-
-# GUNAKAN FORMAT INI UNTUK MENGHINDARI ERROR OPERAND
-CMD ["sh", "-c", "php artisan serve --host=0.0.0.0 --port=${PORT}"]
+# Jalankan Laravel langsung tanpa Apache
+CMD php artisan serve --host=0.0.0.0 --port=${PORT:-80}
