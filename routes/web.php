@@ -20,41 +20,25 @@ Route::post('/daftar', [RegisterController::class, 'store'])->name('register.sto
 // --- AKSES TERPROTEKSI (Wajib Login) ---
 Route::middleware(['auth'])->group(function () {
     
-    // 1. Rute Form Pengaduan
+    // 1. Rute User
     Route::get('/pengaduan', [PengaduanController::class, 'index'])->name('pengaduan.index');
     Route::post('/pengaduan', [PengaduanController::class, 'store'])->name('pengaduan.store');
-    
-    // 2. Rute Riwayat (Pindahkan ke sini agar wajib login)
     Route::get('/riwayat', [PengaduanController::class, 'riwayat'])->name('pengaduan.riwayat');
 
-    // 3. Grouping rute Admin
-    Route::prefix('admin')->group(function () {
-        // ... rute admin lainnya ...
-    });
-
-    // 4. Rute Logout
-    Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
-
-    // Grouping rute Admin
+    // 2. Grouping Rute Admin
     Route::prefix('admin')->group(function () {
         Route::get('/dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
         Route::get('/pengaduan', [AdminController::class, 'pengaduan'])->name('admin.pengaduan');
         Route::get('/akun', [AdminController::class, 'akun'])->name('admin.akun');
         
-        // Perbaikan: Gunakan admin.akun.destroy agar konsisten
+        // Fitur Hapus, Edit, & Show
         Route::delete('/akun/{id}', [AdminController::class, 'destroy'])->name('akun.destroy');
-        
         Route::get('/pengaduan/{id}', [AdminController::class, 'show'])->name('admin.pengaduan.show');
-        
-        // Rute Edit & Update Akun
         Route::get('/akun/{id}/edit', [AkunController::class, 'edit'])->name('akun.edit');
         Route::put('/akun/{id}', [AkunController::class, 'update'])->name('akun.update');
-        
-        // PERBAIKAN: Hapus kata '/admin' di dalam URL karena sudah ada di prefix
-        // Dari: /admin/pengaduan/{id}/tanggapi -> Menjadi: /pengaduan/{id}/tanggapi
         Route::post('/pengaduan/{id}/tanggapi', [AdminController::class, 'tanggapi'])->name('admin.tanggapi');
     });
 
-    // Rute Logout
+    // 3. Rute Logout
     Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 });
