@@ -16,9 +16,13 @@ WORKDIR /var/www/html
 
 COPY . .
 
-
+# Install composer secara bersih
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
-RUN composer install --no-dev --optimize-autoloader
+
+
+
+RUN composer install --no-interaction --optimize-autoloader --no-dev
+
 
 RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache \
     && chmod -R 775 /var/www/html/storage /var/www/html/bootstrap/cache
@@ -35,8 +39,9 @@ RUN sed -ri -e 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/sites-av
 
 RUN sed -ri -e 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/apache2.conf /etc/apache2/conf-available/*.conf
 
+# Pastikan Apache tetap jalan
 
 
 
 
-
+CMD ["apache2-foreground"]
