@@ -24,24 +24,25 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/pengaduan', [PengaduanController::class, 'index'])->name('pengaduan.index');
     Route::post('/pengaduan', [PengaduanController::class, 'store'])->name('pengaduan.store');
 
-    
+
     Route::get('/riwayat', [PengaduanController::class, 'riwayat'])->name('pengaduan.riwayat');
 
     // 2. Akses Admin (Hanya satu group prefix admin saja)
-  Route::prefix('admin')->name('admin.')->group(function () {
-    Route::get('/dashboard', [AdminController::class, 'index'])->name('dashboard');
-    Route::get('/pengaduan', [AdminController::class, 'pengaduan'])->name('pengaduan');
-    Route::get('/akun', [AdminController::class, 'akun'])->name('akun');
-    
-    // Detail & Tanggapi Pengaduan
-    Route::get('/pengaduan/{id}', [AdminController::class, 'show'])->name('pengaduan.show');
-    Route::post('/pengaduan/{id}/tanggapi', [AdminController::class, 'tanggapi'])->name('tanggapi');
+// Grouping rute Admin
+    Route::prefix('admin')->name('admin.')->group(function () {
+        Route::get('/dashboard', [AdminController::class, 'index'])->name('dashboard');
+        Route::get('/pengaduan', [AdminController::class, 'pengaduan'])->name('pengaduan');
+        Route::get('/akun', [AdminController::class, 'akun'])->name('akun');
+        
+        // Detail & Tanggapi Pengaduan
+        Route::get('/pengaduan/{id}', [AdminController::class, 'show'])->name('pengaduan.show');
+        Route::post('/pengaduan/{id}/tanggapi', [AdminController::class, 'tanggapi'])->name('tanggapi');
 
-    // Manajemen Akun - Pastikan penulisan tanda petik dan kurung benar
-    Route::delete('/akun/{id}', [AdminController::class, 'destroy'])->name('akun.destroy');
-    Route::get('/akun/{id}/edit', [AkunController::class, 'edit'])->name('akun.edit');
-    Route::put('/akun/{id}', [AkunController::class, 'update'])->name('akun.update');
-});
+        // Manajemen Akun (Hapus, Edit, Update)
+        Route::delete('/akun/{id}', [AdminController::class, 'destroy'])->name('akun.destroy');
+        Route::get('/akun/{id}/edit', [AkunController::class, 'edit'])->name('akun.edit');
+        Route::put('/akun/{id}', [AkunController::class, 'update'])->name('akun.update');
+    });
 
     // 3. Logout
     Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
