@@ -20,4 +20,5 @@ RUN chmod -R 777 storage bootstrap/cache
 RUN php artisan storage:link
 
 # Menjalankan server
-CMD php artisan serve --host=0.0.0.0 --port=$PORT
+# Hapus baris CMD yang lama, ganti dengan ini:
+CMD ["sh", "-c", "php artisan serve --host=0.0.0.0 --port=$PORT"]
