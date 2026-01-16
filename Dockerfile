@@ -19,4 +19,5 @@ RUN composer install --no-interaction --optimize-autoloader --no-dev
 RUN chmod -R 777 storage bootstrap/cache
 
 # Hapus baris CMD lama, ganti dengan port statis agar web AKTIF
-CMD php artisan serve --host=0.0.0.0 --port=8080
+# Ubah 8080 menjadi 80
+CMD php artisan serve --host=0.0.0.0 --port=80
