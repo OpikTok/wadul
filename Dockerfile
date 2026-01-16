@@ -1,4 +1,4 @@
-FROM php:8.2-apache
+FROM php:8.2-cli
 
 # Instalasi library dasar
 RUN apt-get update && apt-get install -y \
@@ -6,24 +6,17 @@ RUN apt-get update && apt-get install -y \
     zip unzip git curl \
     && docker-php-ext-install pdo_mysql gd
 
-# Aktifkan rewrite untuk Laravel
-RUN a2enmod rewrite
-
+    
 WORKDIR /var/www/html
 COPY . .
 
-# Instal Composer secara bersih
+# Instal Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 RUN composer install --no-interaction --optimize-autoloader --no-dev
 
-# Izin folder (WAJIB agar tidak error 500)
+# Izin folder
 RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache \
     && chmod -R 775 /var/www/html/storage /var/www/html/bootstrap/cache
 
-# Atur Apache ke folder public
-ENV APACHE_DOCUMENT_ROOT /var/www/html/public
-RUN sed -ri -e 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/sites-available/*.conf
-RUN sed -ri -e 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/apache2.conf /etc/apache2/conf-available/*.conf
-RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf
-# Satu-satunya perintah untuk menjalankan server
-CMD ["apache2-foreground"]
+# Jalankan Laravel langsung tanpa Apache
+CMD php artisan serve --host=0.0.0.0 --port=${PORT:-80}
