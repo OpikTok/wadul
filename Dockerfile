@@ -21,4 +21,4 @@ RUN php artisan storage:link
 
 # GUNAKAN FORMAT INI: Menghindari error string + int
 # Gunakan format exec (tanda kurung siku) untuk menghindari error operand
-CMD ["sh", "-c", "php artisan serve --host=0.0.0.0 --port=$PORT"]
+CMD php artisan serve --host=0.0.0.0 --port=$PORT
