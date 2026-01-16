@@ -19,7 +19,7 @@ class Pengaduan extends Model
     'status'
 ];
 
-// Tambahkan relasi ke User agar Admin bisa melihat siapa yang melapor
+
 public function user()
 {
     return $this->belongsTo(User::class, 'user_id');

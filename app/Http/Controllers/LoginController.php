@@ -9,7 +9,7 @@ class LoginController extends Controller
 {
     public function index()
 {
-    // Dari view('user.login') menjadi:
+   
     return view('login');
 }
 
@@ -23,16 +23,15 @@ class LoginController extends Controller
     if (Auth::attempt($credentials)) {
         $request->session()->regenerate();
 
-        // Mengambil data user yang sedang login
+        
         $user = Auth::user();
 
-        // Pastikan 'admin' di sini sesuai dengan tulisan di database Anda (case-sensitive)
-       // Pastikan pengecekan ini menggunakan huruf kecil sesuai isi database
+       
 if (Auth::user()->role === 'admin') {
     return redirect()->intended('/admin/dashboard');
 }
 
-        // Jika bukan admin (masyarakat), arahkan ke pengaduan
+       
         return redirect()->intended('/pengaduan'); 
     }
 
@@ -44,6 +43,5 @@ if (Auth::user()->role === 'admin') {
     $request->session()->invalidate();
     $request->session()->regenerateToken();
 
-    return redirect('/login'); // Ini akan membawa admin kembali ke halaman login
-}
+    return redirect('/login'); }
 }

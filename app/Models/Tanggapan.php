@@ -9,7 +9,7 @@ class Tanggapan extends Model
 {
     use HasFactory;
 
-    // Tambahkan baris ini untuk mengizinkan input data
+    
     protected $fillable = ['pengaduan_id', 'tanggapan'];
 
     // Relasi ke Pengaduan

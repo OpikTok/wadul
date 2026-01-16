@@ -15,7 +15,7 @@ class PengaduanController extends Controller
 
     public function index()
     {
-        // UBAH: Karena file pengaduan.blade.php sudah dipindah ke folder user
+        
         return view('pengaduan'); 
     }
 
@@ -38,14 +38,13 @@ class PengaduanController extends Controller
             'status' => 'proses',
         ]);
 
-        // UBAH: Redirect ke halaman riwayat agar user bisa langsung melihat laporannya
+        
         return redirect()->route('pengaduan.riwayat')->with('success_laporan', 'Laporan berhasil terkirim!');
     }
 
 public function riwayat()
 {
-    // auth()->id() mengambil ID user yang sedang login saat ini
-    // Jadi jika Sahrul yang login, yang ditarik hanya data dengan user_id milik Sahrul
+    
     $pengaduans = Pengaduan::with('tanggapan')
                             ->where('user_id', auth()->id()) 
                             ->latest()

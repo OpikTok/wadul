@@ -1,6 +1,3 @@
-/* ===========================
-   GLOBAL STYLE
-=========================== */
 * {
     margin: 0;
     padding: 0;
@@ -12,26 +9,20 @@ body {
     background: #f8fafc;
     color: #1f2937;
 }
-/* ===========================
-   HEADER HOME (GLASS EFFECT)
-=========================== */
+
 .home .navbar {
     background: rgba(255, 255, 255, 0.65);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-
     border-bottom: 1px solid rgba(255,255,255,0.3);
-
     box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
 }
 
-/* Warna teks menu di home */
 .home .menu a {
     color: #0f172a;
     font-weight: 600;
 }
 
-/* Tombol login */
 .home .navbar button,
 .home .navbar .btn-login {
     background: #0f172a;
@@ -39,25 +30,18 @@ body {
     border-radius: 10px;
 }
 
-
-/* ===========================
-   NAVBAR
-=========================== */
 .navbar {
     width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 18px 60px;
-    background:         white;
+    background: white;
     position: sticky;
     top: 0;
     z-index: 100;
-
-    /* DROP SHADOW */
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
 }
-
 
 .navbar .left {
     display: flex;
@@ -93,25 +77,13 @@ body {
     width: 100%;
 }
 
-
-/* ===========================
-   HERO SECTION (HOME)
-=========================== */
-/* ===========================
-   HERO SECTION FULL PAGE
-=========================== */
-/* ===========================
-   HERO FULL PAGE
-=========================== */
 .hero {
     width: 100%;
-    min-height: calc(100vh - 80px + 350px); /* FULL + 200px */
+    min-height: calc(100vh - 80px + 350px);
     position: relative;
     overflow: hidden;
 }
 
-
-/* Background gambar */
 .hero-img {
     position: absolute;
     inset: 0;
@@ -123,7 +95,6 @@ body {
     z-index: 0;
 }
 
-/* Overlay gelap */
 .hero::after {
     content: "";
     position: absolute;
@@ -135,22 +106,18 @@ body {
     z-index: 1;
 }
 
-/* Konten hero */
 .hero-content {
     position: relative;
     z-index: 2;
     height: 100%;
-
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
     text-align: center;
     color: white;
     padding: 20px;
 }
-
 
 .hero-content h1 {
     font-size: 48px;
@@ -166,7 +133,6 @@ body {
     margin-bottom: 30px;
 }
 
-/* Tombol */
 .hero-btn {
     background: #14b8a6;
     color: white;
@@ -182,34 +148,24 @@ body {
     transform: translateY(-3px);
 }
 
-
-
-
-
-/* ===========================
-   ABOUT SECTION (FULL BACKGROUND)
-=========================== */
 .about-section {
-    position: relative;        /* Sebagai patokan gambar agar tidak lari ke luar seksi */
-    padding: 100px 20px;       /* Padding atas-bawah agar teks tidak nempel ke tepi */
+    position: relative;
+    padding: 100px 20px;
     text-align: center;
-    min-height: 900px;         /* Tinggi minimal agar seksi terlihat luas */
+    min-height: 900px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    overflow: hidden;          /* Potong bagian gambar yang keluar batas */
+    overflow: hidden;
 }
 
-/* Teks diletakkan di atas gambar */
 .about-section h2, 
-
 .about-section p {
     position: relative;
-    z-index: 10;               /* Pastikan angka ini lebih besar dari z-index gambar */
-    max-width: 800px;          /* Agar teks tidak terlalu lebar ke samping */
-    color: #1f2937; 
-              /* Sesuaikan warna agar terbaca di atas gambar */
+    z-index: 10;
+    max-width: 800px;
+    color: #1f2937;
 }
 
 .about-section h2 {
@@ -218,29 +174,19 @@ body {
     margin-top: -340px;
 }
 
-/* Pengaturan Gambar Latar Belakang Penuh */
 .about-bg {
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;               /* Full Kanan-Kiri */
-    height: 100%;              /* Full Atas-Bawah */
-    
-    /* PENTING: object-fit cover menjaga proporsi gambar agar tidak gepeng */
-    object-fit: cover; 
-    
-    /* Mengatur titik tengah gambar */
-    object-position: center;   
-    
-    z-index: 1;                /* Letakkan di bawah teks */
-    opacity: 0.2;              /* Transparansi agar tidak menutupi teks */
-    
-    /* Hapus semua margin negatif sebelumnya agar tidak geser */
-    margin: 0 !important;      
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    z-index: 1;
+    opacity: 0.2;
+    margin: 0 !important;
 }
-/* ===========================
-   FORM PENGADUAN
-=========================== */
+
 .bg-illustration {
     background-image: url('../img/background.jpg');
     background-size: cover;
@@ -276,9 +222,6 @@ body {
     box-shadow: 0 0 0 3px rgba(20,184,166,0.25);
 }
 
-/* ===========================
-   ADMIN LAYOUT
-=========================== */
 .admin-body {
     background-image: url('../img/background.jpg');
     background-size: cover;
@@ -287,9 +230,6 @@ body {
     height: 100vh;
 }
 
-/* ===========================
-   SIDEBAR ADMIN
-=========================== */
 .sidebar {
     width: 280px;
     height: 100vh;
@@ -319,9 +259,6 @@ body {
     color: #0f172a;
 }
 
-/* ===========================
-   MENU ADMIN
-=========================== */
 .nav-menu {
     display: flex;
     flex-direction: column;
@@ -351,9 +288,6 @@ body {
     transform: translateX(5px);
 }
 
-/* ===========================
-   CARD PENGADUAN ADMIN
-=========================== */
 .card-pengaduan {
     background: linear-gradient(135deg, #0f172a, #1e293b);
     color: white;
@@ -371,9 +305,6 @@ body {
     font-weight: 700;
 }
 
-/* ===========================
-   TABLE ADMIN
-=========================== */
 .table-container {
     background: rgba(255, 255, 255, 0.85);
     backdrop-filter: blur(10px);
@@ -382,9 +313,6 @@ body {
     box-shadow: 0 15px 40px rgba(0,0,0,0.1);
 }
 
-/* ===========================
-   LOGOUT
-=========================== */
 .logout-link {
     margin-top: auto;
     font-weight: 600;
@@ -392,22 +320,12 @@ body {
     text-decoration: none;
 }
 
-/* public/assets/css/style.css */
-
-/* Reset Dasar */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
 body {
     font-family: 'sans-serif', Arial, Helvetica;
-    background-color: #f3f4f6; /* bg-gray-100 */
+    background-color: #f3f4f6;
     color: #1f2937;
 }
 
-/* Navigasi */
 .navbar {
     background-color: #ffffff;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
@@ -416,12 +334,12 @@ body {
 
 .nav-container {
     display: flex;
-    justify-content: space-between; /* Menarik logo ke kiri, links ke kanan */
+    justify-content: space-between;
     align-items: center;
-    width: 100%;           /* Gunakan lebar penuh 100% */
-    max-width: 100%;       /* Pastikan tidak ada batas lebar maksimal */
-    padding: 0 0px;       /* Berikan sedikit jarak dari pinggir layar agar tidak menempel sekali */
-    margin: 0;             /* Hapus margin auto agar tidak ke tengah */
+    width: 100%;
+    max-width: 100%;
+    padding: 0 0px;
+    margin: 0;
 }
 
 .nav-logo {
@@ -454,7 +372,7 @@ body {
 }
 
 .nav-links a:hover {
-    color: #0d9488; /* teal-600 */
+    color: #0d9488;
 }
 
 .btn-login {
@@ -469,21 +387,19 @@ body {
     background-color: #2c3e50;
 }
 
-/* Area Utama */
 .main-content {
     min-height: calc(100vh - 72px);
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 2.5rem 0;
-    background-color: #e2e8f0; /* bg-slate-200 */
+    background-color: #e2e8f0;
 }
 
-/* Kartu Laporan */
 .report-card {
     background-color: white;
     width: 90%;
-    max-width: 896px; /* max-w-4xl */
+    max-width: 896px;
     padding: 2.5rem;
     border-radius: 0.75rem;
     box-shadow: 0 10px 25px rgba(0,0,0,0.1);
@@ -498,7 +414,6 @@ body {
     font-weight: bold;
 }
 
-/* Form Input */
 .form-group {
     margin-bottom: 1.5rem;
 }
@@ -527,7 +442,6 @@ body {
     background-color: #f9fafb;
 }
 
-/* Tombol Kirim */
 .form-footer {
     display: flex;
     justify-content: center;
@@ -553,26 +467,9 @@ body {
     background-color: #1a252f;
 }
 
-.btn-login {
-    background-color: #37474f;
-    color: #ffffff !important;
-    padding: 8px 20px;
-    border-radius: 6px;
-    font-weight: 600;
-    text-decoration: none;
-    transition: background 0.3s;
-}
-
-.btn-login:hover {
-    background-color: #2c3e50;
-}
-
-/* ===========================
-    3. LOGIN & FORM AREA
-=========================== */
 .login-main {
-    height: calc(100vh - 65px); /* Full layar dikurangi navbar */
-    background-color: #08428d; /* bg-slate-200 */
+    height: calc(100vh - 65px);
+    background-color: #08428d;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -580,12 +477,12 @@ body {
 }
 
 .login-card {
-    background-color: #d1d5db; /* Abu-abu kartu sesuai permintaan */
+    background-color: #d1d5db;
     padding: 40px;
     border-radius: 12px;
     box-shadow: 0 10px 25px rgba(0,0,0,0.1);
     width: 100%;
-    max-width: 400px; /* Lebar kotak login */
+    max-width: 400px;
 }
 
 .login-title {
@@ -596,13 +493,6 @@ body {
     letter-spacing: 2px;
     color: #1f2937;
     text-transform: uppercase;
-}
-
-/* ===========================
-    4. FORM ELEMENTS
-=========================== */
-.form-group {
-    margin-bottom: 15px;
 }
 
 .mb-large {
@@ -634,9 +524,6 @@ body {
     box-shadow: 0 0 0 3px rgba(20, 184, 166, 0.2);
 }
 
-/* ===========================
-    5. BUTTONS & ACTIONS
-=========================== */
 .form-actions {
     display: flex;
     flex-direction: column;
@@ -646,7 +533,7 @@ body {
 
 .btn-submit-login {
     width: 100%;
-    background-color: #2c3e50; /* Biru gelap */
+    background-color: #2c3e50;
     color: #ffffff;
     font-weight: 700;
     padding: 12px;
@@ -673,19 +560,14 @@ body {
 }
 
 .login-main {
-    /* Menggunakan min-height agar area bisa memanjang jika kontennya banyak */
     min-height: 105vh; 
     background-color: #e7eff9; 
     display: flex;
     align-items: center;
     justify-content: center;
-    
-    /* Tambahkan padding atas yang lebih besar untuk menghindari tabrakan dengan navbar */
-    /* Padding bawah ditambahkan agar kartu tidak menyentuh dasar layar */
     padding: 5px 20px; 
 }
 
-/* Pastikan login-card tidak terlalu menempel dengan elemen di sekitarnya */
 .login-card {
     background-color: #d1d5db;
     padding: 2.5rem;
@@ -693,12 +575,9 @@ body {
     box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
     width: 100%;
     max-width: 400px;
-    margin: auto; /* Membantu penempatan di tengah secara vertikal */
+    margin: auto;
 }
 
-/* ===========================
-    HISTORY PAGE STYLES
-=========================== */
 .history-container {
     max-width: 900px;
     margin: 40px auto;
@@ -721,7 +600,6 @@ body {
     font-size: 0.9rem;
 }
 
-/* Empty State */
 .empty-state {
     background-color: #d1d5db;
     padding: 60px;
@@ -731,7 +609,6 @@ body {
     color: #4b5563;
 }
 
-/* List & Cards */
 .history-list {
     display: flex;
     flex-direction: column;
@@ -742,7 +619,7 @@ body {
     background-color: white;
     border-radius: 12px;
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-    border-left: 6px solid #2c3e50; /* Aksen warna biru gelap */
+    border-left: 6px solid #2c3e50;
     overflow: hidden;
     transition: 0.3s;
 }
@@ -764,7 +641,7 @@ body {
 .report-id {
     display: block;
     font-weight: 800;
-    color: #14b8a6; /* Teal */
+    color: #14b8a6;
     font-size: 0.75rem;
     letter-spacing: 1px;
 }
@@ -774,7 +651,6 @@ body {
     color: #94a3b8;
 }
 
-/* Badge Status */
 .status-badge {
     padding: 4px 12px;
     border-radius: 20px;
@@ -792,7 +668,6 @@ body {
     color: #854d0e;
 }
 
-/* Body & Photo */
 .card-body {
     padding: 20px;
 }
@@ -809,13 +684,12 @@ body {
     box-shadow: 0 4px 6px rgba(0,0,0,0.05);
 }
 
-/* Tanggapan Area */
 .card-footer {
     padding: 0 20px 20px;
 }
 
 .response-box {
-    background-color: #f0fdfa; /* Teal muda */
+    background-color: #f0fdfa;
     border: 1px solid #ccfbf1;
     padding: 15px;
     border-radius: 8px;
@@ -840,4 +714,3 @@ body {
     color: #94a3b8;
     font-style: italic;
 }
-

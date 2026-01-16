@@ -9,7 +9,7 @@ class AkunController extends Controller
 {
     public function index()
     {
-        // Mengambil semua user dengan role 'user' (masyarakat)
+        
         $users = User::where('role', 'user')->get();
         
         return view('admin.akun', compact('users'));
@@ -17,16 +17,16 @@ class AkunController extends Controller
 
     public function destroy($id)
     {
-        // Fungsi untuk menghapus akun
+        
         User::findOrFail($id)->delete();
         return back()->with('success', 'Akun berhasil dihapus');
     }
    public function edit($id)
 {
-    // Mengambil data user berdasarkan ID yang diklik, bukan yang terbaru
+    
     $user = User::findOrFail($id); 
     
-    // Pastikan nama view sesuai dengan saran sistem 'admin\editakun' atau 'admin.edit_akun'
+   
     return view('admin.edit_akun', compact('user')); 
 }
 
