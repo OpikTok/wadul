@@ -23,22 +23,20 @@ Route::middleware(['auth'])->group(function () {
     // 1. Pengaduan & Riwayat User
     Route::get('/pengaduan', [PengaduanController::class, 'index'])->name('pengaduan.index');
     Route::post('/pengaduan', [PengaduanController::class, 'store'])->name('pengaduan.store');
-
-
     Route::get('/riwayat', [PengaduanController::class, 'riwayat'])->name('pengaduan.riwayat');
 
     // 2. Akses Admin (Hanya satu group prefix admin saja)
-// Grouping rute Admin
     Route::prefix('admin')->name('admin.')->group(function () {
         Route::get('/dashboard', [AdminController::class, 'index'])->name('dashboard');
         Route::get('/pengaduan', [AdminController::class, 'pengaduan'])->name('pengaduan');
         Route::get('/akun', [AdminController::class, 'akun'])->name('akun');
         
-        // Detail & Tanggapi Pengaduan
+        // Pengaduan detail & tanggapan
         Route::get('/pengaduan/{id}', [AdminController::class, 'show'])->name('pengaduan.show');
         Route::post('/pengaduan/{id}/tanggapi', [AdminController::class, 'tanggapi'])->name('tanggapi');
 
         // Manajemen Akun (Hapus, Edit, Update)
+        // Gunakan controller yang sama jika memungkinkan, di sini saya pakai AdminController agar seragam
         Route::delete('/akun/{id}', [AdminController::class, 'destroy'])->name('akun.destroy');
         Route::get('/akun/{id}/edit', [AkunController::class, 'edit'])->name('akun.edit');
         Route::put('/akun/{id}', [AkunController::class, 'update'])->name('akun.update');
