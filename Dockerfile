@@ -20,6 +20,8 @@ RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cac
     && chmod -R 775 /var/www/html/storage /var/www/html/bootstrap/cache
 
 # Jalankan Laravel langsung tanpa Apache
-# Hapus ${PORT:-80} dan ganti dengan angka 80 saja
 RUN php artisan storage:link
+
+# Hapus ${PORT:-80} dan ganti dengan angka 80 saja
+
 CMD php artisan serve --host=0.0.0.0 --port=80
