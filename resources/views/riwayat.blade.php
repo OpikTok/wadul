@@ -54,7 +54,7 @@
                             
                            @if($item->foto)
     <div class="report-photo" style="margin-top: 15px;">
-        <img src="{{ asset('storage/' . $item->foto) }}" alt="Foto Laporan" style="width: 100%; max-width: 300px; border-radius: 8px; border: 1px solid #ddd;">
+        <img src="{{ asset('storage/' . $item->foto) }}" alt="Foto">
     </div>
 @endif
                         </div>
