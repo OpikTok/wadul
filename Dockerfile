@@ -16,9 +16,8 @@ RUN composer install --no-interaction --optimize-autoloader --no-dev
 # IZIN FOLDER: Dibuat lebih fleksibel agar bisa menulis file/foto
 RUN chmod -R 777 storage bootstrap/cache
 
-# Menghubungkan folder storage ke public agar foto bisa diakses browser
+# Tambahkan ini agar folder storage terhubung
 RUN php artisan storage:link
 
-# Menjalankan server
-# Hapus baris CMD yang lama, ganti dengan ini:
-CMD ["sh", "-c", "php artisan serve --host=0.0.0.0 --port=$PORT"]
+# GUNAKAN FORMAT INI: Menghindari error string + int
+CMD php artisan serve --host=0.0.0.0 --port=$PORT
