@@ -1,6 +1,6 @@
 FROM php:8.2-cli
 
-# Instalasi library
+# Instalasi library dasar
 RUN apt-get update && apt-get install -y \
     libpng-dev libjpeg-dev libfreetype6-dev \
     zip unzip git curl \
@@ -8,16 +8,17 @@ RUN apt-get update && apt-get install -y \
 
 WORKDIR /var/www/html
 
-# Salin semua file
+
 COPY . .
 
 # Instal Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 RUN composer install --no-interaction --optimize-autoloader --no-dev
 
-# IZIN FOLDER: Menggunakan 777 agar tidak error permission
-RUN chmod -R 777 storage bootstrap/cache
+# Izin folder
+RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache \
+    && chmod -R 775 /var/www/html/storage /var/www/html/bootstrap/cache
 
-# Hapus baris CMD lama, ganti dengan port statis agar web AKTIF
-# Ubah 8080 menjadi 80
+# Jalankan Laravel langsung tanpa Apache
+# Hapus ${PORT:-80} dan ganti dengan angka 80 saja
 CMD php artisan serve --host=0.0.0.0 --port=80
