@@ -18,4 +18,8 @@ RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cac
     && chmod -R 775 /var/www/html/storage /var/www/html/bootstrap/cache
 
 # Jalankan Laravel langsung tanpa Apache
-CMD php artisan serve --host=0.0.0.0 --port=${PORT:-80}
+# Tambahkan ini sebelum CMD jika belum ada
+RUN php artisan storage:link
+
+# GUNAKAN FORMAT INI: Pastikan tidak ada tanda kurung siku atau kutip yang salah
+CMD php artisan serve --host=0.0.0.0 --port=$PORT
