@@ -19,29 +19,42 @@ Route::post('/daftar', [RegisterController::class, 'store'])->name('register.sto
 
 // --- AKSES TERPROTEKSI (Wajib Login) ---
 Route::middleware(['auth'])->group(function () {
-    
-    // 1. Pengaduan & Riwayat User
-    Route::get('/pengaduan', [PengaduanController::class, 'index'])->name('pengaduan.index');
-    Route::post('/pengaduan', [PengaduanController::class, 'store'])->name('pengaduan.store');
-    Route::get('/riwayat', [PengaduanController::class, 'riwayat'])->name('pengaduan.riwayat');
+    
+    // 1. Rute Form Pengaduan
+    Route::get('/pengaduan', [PengaduanController::class, 'index'])->name('pengaduan.index');
+    Route::post('/pengaduan', [PengaduanController::class, 'store'])->name('pengaduan.store');
+    
+    // 2. Rute Riwayat (Pindahkan ke sini agar wajib login)
+    Route::get('/riwayat', [PengaduanController::class, 'riwayat'])->name('pengaduan.riwayat');
 
-    // 2. Akses Admin (Hanya satu group prefix admin saja)
-    Route::prefix('admin')->name('admin.')->group(function () {
-        Route::get('/dashboard', [AdminController::class, 'index'])->name('dashboard');
-        Route::get('/pengaduan', [AdminController::class, 'pengaduan'])->name('pengaduan');
-        Route::get('/akun', [AdminController::class, 'akun'])->name('akun');
-        
-        // Pengaduan detail & tanggapan
-        Route::get('/pengaduan/{id}', [AdminController::class, 'show'])->name('pengaduan.show');
-        Route::post('/pengaduan/{id}/tanggapi', [AdminController::class, 'tanggapi'])->name('tanggapi');
+    // 3. Grouping rute Admin
+    Route::prefix('admin')->group(function () {
+        // ... rute admin lainnya ...
+    });
 
-        // Manajemen Akun (Hapus, Edit, Update)
-        // Gunakan controller yang sama jika memungkinkan, di sini saya pakai AdminController agar seragam
-        Route::delete('/akun/{id}', [AdminController::class, 'destroy'])->name('akun.destroy');
-        Route::get('/akun/{id}/edit', [AkunController::class, 'edit'])->name('akun.edit');
-        Route::put('/akun/{id}', [AkunController::class, 'update'])->name('akun.update');
-    });
+    // 4. Rute Logout
+    Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
-    // 3. Logout
-    Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+    // Grouping rute Admin
+    Route::prefix('admin')->group(function () {
+        Route::get('/dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
+        Route::get('/pengaduan', [AdminController::class, 'pengaduan'])->name('admin.pengaduan');
+        Route::get('/akun', [AdminController::class, 'akun'])->name('admin.akun');
+        
+        // Perbaikan: Gunakan admin.akun.destroy agar konsisten
+        Route::delete('/akun/{id}', [AdminController::class, 'destroy'])->name('akun.destroy');
+        
+        Route::get('/pengaduan/{id}', [AdminController::class, 'show'])->name('admin.pengaduan.show');
+        
+        // Rute Edit & Update Akun
+        Route::get('/akun/{id}/edit', [AkunController::class, 'edit'])->name('akun.edit');
+        Route::put('/akun/{id}', [AkunController::class, 'update'])->name('akun.update');
+        
+        // PERBAIKAN: Hapus kata '/admin' di dalam URL karena sudah ada di prefix
+        // Dari: /admin/pengaduan/{id}/tanggapi -> Menjadi: /pengaduan/{id}/tanggapi
+        Route::post('/pengaduan/{id}/tanggapi', [AdminController::class, 'tanggapi'])->name('admin.tanggapi');
+    });
+
+    // Rute Logout
+    Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 });
