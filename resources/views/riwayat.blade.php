@@ -52,10 +52,11 @@
                         <div class="card-body">
                             <p class="report-text">{{ $item->isi_laporan }}</p>
                             
-                            @if($item->foto)
-                                <div class="report-photo">
-                                  <img src="{{ asset('storage/' . $item->foto) }}" alt="Foto Laporan" style="width: 200px;">
-                            @endif
+                           @if($item->foto)
+    <div class="report-photo" style="margin-top: 15px;">
+        <img src="{{ asset('storage/' . $item->foto) }}" alt="Foto Laporan" style="width: 100%; max-width: 300px; border-radius: 8px; border: 1px solid #ddd;">
+    </div>
+@endif
                         </div>
 
                         <div class="card-footer">
