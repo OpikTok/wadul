@@ -59,12 +59,13 @@
                     Edit
                 </a>
 
-                <form action="{{ route('akun.destroy', $user->id) }}" method="POST" onsubmit="return confirm('Yakin ingin menghapus akun ini?')">
-                    @csrf
-                    @method('DELETE')
-                    <button type="submit" class="bg-red-500 text-white px-3 py-1 rounded text-xs font-bold hover:bg-red-700 transition">
-                        Hapus
-                    </button>
+               <form action="{{ route('admin.akun.destroy', $user->id) }}" method="POST" style="display:inline;">
+    @csrf
+    @method('DELETE')
+    <button type="submit" class="btn btn-danger" onclick="return confirm('Yakin hapus akun ini?')">
+        Hapus
+    </button>
+</form>
                 </form>
             </div>
         </td>
