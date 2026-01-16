@@ -40,6 +40,7 @@ Route::middleware(['auth'])->group(function () {
         // Pastikan AkunController ini ada di folder Controller Anda
         Route::get('/akun/{id}/edit', [AkunController::class, 'edit'])->name('akun.edit');
         Route::put('/akun/{id}', [AkunController::class, 'update'])->name('akun.update');
+        Route::delete('/akun/{id}', [AdminController::class, 'destroy'])->name('akun.destroy');
         
         Route::post('/pengaduan/{id}/tanggapi', [AdminController::class, 'tanggapi'])->name('admin.tanggapi');
     });
