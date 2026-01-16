@@ -21,4 +21,4 @@ RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cac
 RUN php artisan storage:link
 
 # Perintah menjalankan server harus di baris paling bawah
-CMD php artisan serve --host=0.0.0.0 --port=${PORT}
+CMD php artisan serve --host=0.0.0.0 --port=$PORT
