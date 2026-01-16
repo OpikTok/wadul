@@ -20,23 +20,23 @@ Route::post('/daftar', [RegisterController::class, 'store'])->name('register.sto
 // --- AKSES TERPROTEKSI (Wajib Login) ---
 Route::middleware(['auth'])->group(function () {
     
-    // 1. Rute User
+    // 1. Rute User (Pengaduan & Riwayat)
     Route::get('/pengaduan', [PengaduanController::class, 'index'])->name('pengaduan.index');
     Route::post('/pengaduan', [PengaduanController::class, 'store'])->name('pengaduan.store');
     Route::get('/riwayat', [PengaduanController::class, 'riwayat'])->name('pengaduan.riwayat');
 
-    // 2. Grouping Rute Admin
-    Route::prefix('admin')->group(function () {
-        Route::get('/dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
-        Route::get('/pengaduan', [AdminController::class, 'pengaduan'])->name('admin.pengaduan');
-        Route::get('/akun', [AdminController::class, 'akun'])->name('admin.akun');
+    // 2. Satu Grouping Rute Admin (Jangan ada dua prefix admin)
+    Route::prefix('admin')->name('admin.')->group(function () {
+        Route::get('/dashboard', [AdminController::class, 'index'])->name('dashboard');
+        Route::get('/pengaduan', [AdminController::class, 'pengaduan'])->name('pengaduan');
+        Route::get('/akun', [AdminController::class, 'akun'])->name('akun');
         
-        // Fitur Hapus, Edit, & Show
+        // Aksi Hapus, Show, Edit, & Update
         Route::delete('/akun/{id}', [AdminController::class, 'destroy'])->name('akun.destroy');
-        Route::get('/pengaduan/{id}', [AdminController::class, 'show'])->name('admin.pengaduan.show');
+        Route::get('/pengaduan/{id}', [AdminController::class, 'show'])->name('pengaduan.show');
         Route::get('/akun/{id}/edit', [AkunController::class, 'edit'])->name('akun.edit');
         Route::put('/akun/{id}', [AkunController::class, 'update'])->name('akun.update');
-        Route::post('/pengaduan/{id}/tanggapi', [AdminController::class, 'tanggapi'])->name('admin.tanggapi');
+        Route::post('/pengaduan/{id}/tanggapi', [AdminController::class, 'tanggapi'])->name('tanggapi');
     });
 
     // 3. Rute Logout
