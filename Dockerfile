@@ -1,12 +1,11 @@
 FROM php:8.2-cli
 
-# Instalasi library dasar
+# Instalasi library dasar yang dibutuhkan Laravel
 RUN apt-get update && apt-get install -y \
     libpng-dev libjpeg-dev libfreetype6-dev \
     zip unzip git curl \
     && docker-php-ext-install pdo_mysql gd
 
-    
 WORKDIR /var/www/html
 COPY . .
 
@@ -14,11 +13,11 @@ COPY . .
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 RUN composer install --no-interaction --optimize-autoloader --no-dev
 
-# Izin folder
-RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache \
-    && chmod -R 775 /var/www/html/storage /var/www/html/bootstrap/cache
-  # Jalankan perintah storage link di sini
+# IZIN FOLDER: Dibuat lebih fleksibel agar bisa menulis file/foto
+RUN chmod -R 777 storage bootstrap/cache
+
+# Menghubungkan folder storage ke public agar foto bisa diakses browser
 RUN php artisan storage:link
 
-# Perintah menjalankan server harus di baris paling bawah
+# Menjalankan server
 CMD php artisan serve --host=0.0.0.0 --port=$PORT
