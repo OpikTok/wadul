@@ -20,4 +20,5 @@ RUN chmod -R 777 storage bootstrap/cache
 RUN php artisan storage:link
 
 # GUNAKAN FORMAT INI: Menghindari error string + int
-CMD php artisan serve --host=0.0.0.0 --port=$PORT
+# Gunakan format exec (tanda kurung siku) untuk menghindari error operand
+CMD ["sh", "-c", "php artisan serve --host=0.0.0.0 --port=$PORT"]
