@@ -1,19 +1,25 @@
 # 📢 Sistem Website Pengaduan Masyarakat
 
 ## 📌 Deskripsi Sistem
-Sistem Website Pengaduan Masyarakat adalah aplikasi berbasis web yang digunakan untuk menampung, mengelola, dan menindaklanjuti laporan atau pengaduan dari masyarakat secara online. Sistem ini bertujuan untuk mempermudah masyarakat dalam menyampaikan keluhan serta membantu admin atau petugas dalam mengelola pengaduan secara efektif dan transparan.
+Sistem Website Pengaduan Masyarakat adalah aplikasi berbasis web yang digunakan untuk menampung, mengelola, dan menindaklanjuti laporan atau pengaduan dari masyarakat secara online. Sistem ini memudahkan masyarakat dalam menyampaikan keluhan serta membantu admin atau petugas dalam memproses pengaduan secara cepat, terstruktur, dan transparan.
 
 ---
 
 ## 🎯 Tujuan Sistem
-- Mempermudah masyarakat dalam menyampaikan pengaduan
-- Meningkatkan kualitas pelayanan publik
-- Mengelola data pengaduan secara terstruktur
+- Menyediakan layanan pengaduan masyarakat secara online
+- Meningkatkan kualitas dan transparansi pelayanan publik
+- Mempermudah pengelolaan data pengaduan
 - Mempercepat proses tindak lanjut pengaduan
 
 ---
 
 ## ⚙️ Fitur Sistem
+
+### 🔐 Fitur Login & Autentikasi
+- Login masyarakat
+- Login admin
+- Validasi username dan password
+- Pembatasan akses berdasarkan hak pengguna
 
 ### 👤 Fitur Masyarakat
 - Registrasi akun
@@ -25,9 +31,9 @@ Sistem Website Pengaduan Masyarakat adalah aplikasi berbasis web yang digunakan 
 
 ### 🛠️ Fitur Admin
 - Login admin
-- Melihat daftar pengaduan masuk
+- Melihat pengaduan masuk
 - Memverifikasi pengaduan
-- Memberikan tanggapan pengaduan
+- Memberikan tanggapan
 - Mengubah status pengaduan
 - Mengelola data pengguna
 - Melihat laporan pengaduan
@@ -35,12 +41,12 @@ Sistem Website Pengaduan Masyarakat adalah aplikasi berbasis web yang digunakan 
 ---
 
 ## 🔄 Alur Sistem
-1. Masyarakat melakukan registrasi dan login
-2. Pengguna mengirimkan pengaduan melalui form
-3. Sistem menyimpan data pengaduan ke database
-4. Admin memverifikasi dan memproses pengaduan
-5. Admin memberikan tanggapan
-6. Masyarakat dapat melihat status pengaduan
+1. Pengguna melakukan registrasi dan login
+2. Masyarakat mengirimkan pengaduan melalui sistem
+3. Sistem menyimpan data ke database
+4. Admin login dan memverifikasi pengaduan
+5. Admin memberikan tanggapan dan mengubah status
+6. Masyarakat melihat perkembangan pengaduan
 
 ---
 
@@ -55,9 +61,9 @@ Sistem Website Pengaduan Masyarakat adalah aplikasi berbasis web yang digunakan 
 ## 💻 Cara Instalasi
 
 ### 1️⃣ Persiapan
-Pastikan perangkat sudah terinstall:
+Pastikan sudah terinstall:
 - XAMPP atau Laragon
-- Web Browser (Google Chrome / Edge)
+- Web Browser
 - Text Editor (Visual Studio Code)
 
 ---
@@ -66,4 +72,3 @@ Pastikan perangkat sudah terinstall:
 Clone repository:
 ```bash
 git clone https://github.com/username/pengaduan-masyarakat.git
-
