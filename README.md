@@ -62,7 +62,7 @@ Sistem Website Pengaduan Masyarakat adalah aplikasi berbasis web yang digunakan 
 
 ### 1️⃣ Persiapan
 Pastikan sudah terinstall:
-- XAMPP atau Laragon
+- Docker
 - Web Browser
 - Text Editor (Visual Studio Code)
 
