@@ -18,13 +18,11 @@ class AdminController extends Controller
     $pengaduans = Pengaduan::with('user')->latest()->get();
     return view('admin.pengaduan', compact('pengaduans'));
 }
-    public function akun()
+ public function akun()
 {
     
-    $users = \App\Models\User::where('role', 'user')->get(); 
-    
-   
-    return view('admin.akun', compact('users'));
+    $users = \App\Models\User::all(); 
+    return view('admin.akun', compact('users')); 
 }
     public function destroy($id)
 {
