@@ -14,8 +14,8 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 RUN composer install --no-interaction --optimize-autoloader --no-dev
 
 # Izin folder
-RUN chmod -R 777 storage bootstrap/cache
+RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache \
+    && chmod -R 775 /var/www/html/storage /var/www/html/bootstrap/cache
 
-# Perintah menjalankan server paling simpel
-# Kita hapus --port=$PORT dan biarkan Railway yang menentukan secara otomatis
-CMD php artisan serve --host=0.0.0.0 --port=8080
+# Jalankan Laravel langsung tanpa Apache
+CMD php artisan serve --host=0.0.0.0 --port=${PORT:-80}
