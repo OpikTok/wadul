@@ -51,10 +51,10 @@ Sistem Website Pengaduan Masyarakat adalah aplikasi berbasis web yang digunakan 
 ---
 
 ## 🧩 Teknologi yang Digunakan
-- Frontend : HTML, CSS, JavaScript, Bootstrap
+- Frontend : HTML, CSS, JavaScript, Bootstrap,tailwinds
 - Backend  : PHP / Laravel
 - Database : MySQL
-- Server   : Apache (XAMPP / Laragon)
+- Server   : Apache (Docker)
 
 ---
 
