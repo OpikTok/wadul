@@ -54,13 +54,18 @@
         
         <td class="py-4 px-2">
             <div class="flex justify-center items-center gap-2">
-              <a href="{{ route('admin.akun.edit', $user->id) }}" class="btn btn-primary">Edit</a>
-<form action="{{ route('admin.akun.destroy', $user->id) }}" method="POST" style="display:inline;">
-    @csrf
-    @method('DELETE')
-    <button type="submit" class="btn btn-danger" onclick="return confirm('Yakin hapus?')">Hapus</button>
-</form>
-               
+                <a href="{{ route('akun.edit', $user->id) }}" 
+                   class="bg-blue-500 text-white px-3 py-1 rounded text-xs font-bold hover:bg-blue-700 transition">
+                    Edit
+                </a>
+
+                <form action="{{ route('akun.destroy', $user->id) }}" method="POST" onsubmit="return confirm('Yakin ingin menghapus akun ini?')">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="bg-red-500 text-white px-3 py-1 rounded text-xs font-bold hover:bg-red-700 transition">
+                        Hapus
+                    </button>
+                </form>
             </div>
         </td>
     </tr>
