@@ -58,7 +58,7 @@
                                 <td class="py-4 px-4 text-gray-600">{{ $user->rt_rw ?? '-' }}</td>
                                 <td class="py-4 px-4">
                                     <div class="flex justify-center items-center gap-3">
-                                        <a href="{{ route('admin.akun.edit', $user->id) }}" 
+                                        <a href="{{ route('admin.akun.editakun', $user->id) }}" 
                                            class="bg-blue-600 text-white px-4 py-1.5 rounded-lg text-xs font-bold hover:bg-blue-800 transition shadow-sm">
                                             Edit
                                         </a>
