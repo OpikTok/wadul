@@ -27,7 +27,7 @@ class AkunController extends Controller
     $user = User::findOrFail($id); 
     
    
-    return view('admin.edit_akun', compact('user')); 
+    return view('admin.editakun', compact('user')); 
 }
 
 public function update(Request $request, $id)
