@@ -1,6 +1,6 @@
 # 📢 Sistem Website Pengaduan Masyarakat
-M. Syahrul fuad       5230311084
-Mohamad Zain Rofiq    5230311106
+-M. Syahrul fuad       5230311084
+-Mohamad Zain Rofiq    5230311106
 
 ## 📌 Deskripsi Sistem
 Sistem Website Pengaduan Masyarakat adalah aplikasi berbasis web yang digunakan untuk menampung, mengelola, dan menindaklanjuti laporan atau pengaduan dari masyarakat secara online. Sistem ini memudahkan masyarakat dalam menyampaikan keluhan serta membantu admin atau petugas dalam memproses pengaduan secara cepat, terstruktur, dan transparan.
