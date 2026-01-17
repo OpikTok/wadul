@@ -13,13 +13,13 @@ return new class extends Migration
      */
 public function up(): void
 {
-    // Gunakan Schema::create untuk membuat tabel baru
+    
     Schema::create('pengaduans', function (Blueprint $table) {
         $table->id();
-        $table->foreignId('user_id')->constrained(); // Ini kolom yang tadinya hilang
+        $table->foreignId('user_id')->constrained('users')->onDelete('cascade'); 
         $table->text('isi_laporan');
         $table->string('foto')->nullable();
-        $table->string('status')->default('proses'); // Tambahkan jika dibutuhkan di controller
+        $table->string('status')->default('proses'); 
         $table->timestamps();
     });
 }

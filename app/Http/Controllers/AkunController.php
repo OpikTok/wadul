@@ -16,11 +16,18 @@ class AkunController extends Controller
     }
 
     public function destroy($id)
-    {
-        
-        User::findOrFail($id)->delete();
-        return back()->with('success', 'Akun berhasil dihapus');
-    }
+{
+    // 1. Cari user
+    $user = User::findOrFail($id);
+    
+    // 2. Hapus semua pengaduan yang dibuat oleh user ini dulu (agar tidak error constraint)
+    \DB::table('pengaduans')->where('user_id', $id)->delete();
+    
+    // 3. Baru hapus user-nya
+    $user->delete();
+    
+    return back()->with('success', 'Akun dan data terkait berhasil dihapus');
+}
    public function edit($id)
 {
     
