@@ -71,4 +71,5 @@ Pastikan sudah terinstall:
 ### 2️⃣ Clone atau Download Project
 Clone repository:
 ```bash
-git clone https://github.com/username/pengaduan-masyarakat.git
+git clone https://github.com/OpikTok/wadul.git
+
