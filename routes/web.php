@@ -33,7 +33,7 @@ Route::middleware(['auth'])->group(function () {
         
         // --- INI PERBAIKAN TOMBOL EDIT & HAPUS ANDA ---
         Route::delete('/akun/{id}', [AdminController::class, 'destroy'])->name('admin.akun.destroy');
-        Route::get('/akun/{id}/edit', [AkunController::class, 'edit'])->name('admin.akun.edit');
+        Route::get('/akun/{id}/editakun', [AkunController::class, 'editakun'])->name('admin.akun.editakun');
         Route::put('/akun/{id}', [AkunController::class, 'update'])->name('admin.akun.update');
         
         Route::get('/pengaduan/{id}', [AdminController::class, 'show'])->name('admin.pengaduan.show');
